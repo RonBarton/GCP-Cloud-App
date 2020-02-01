@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import jsonify
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -14,10 +15,11 @@ def bob():
     val = {"value": "bob"}
     return jsonify(val)
 
+@app.route('/pandas')
+def pandas_sugar():
+    df = pd.read_csv("https://raw.githubusercontent.com/noahgift/sugar/master/data/education_sugar_cdc_2003.csv")
+    return jsonify(df.to_dict())
 
 if __name__ == '__main__':
-    # This is used when running locally only. When deploying to Google App
-    # Engine, a webserver process such as Gunicorn will serve the app. This
-    # can be configured by adding an `entrypoint` to app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
 # [END gae_python37_app]
