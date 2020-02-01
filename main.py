@@ -1,5 +1,5 @@
 from flask import Flask
-
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -8,6 +8,11 @@ app = Flask(__name__)
 def hello():
     """Return a friendly HTTP greeting."""
     return 'Hello World!'
+
+@app.route('/bob')
+def bob():
+    val = {"value": "bob"}
+    return jsonify(val)
 
 
 if __name__ == '__main__':
