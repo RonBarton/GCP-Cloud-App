@@ -8,11 +8,11 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'This is Project 1 for Cloud computing 455658655 '
+    return 'This is Project 1 for Cloud computing'
 
-@app.route('/noah')
+@app.route('/bob')
 def bob():
-    val = {"value": "Noah is gheyfish"}
+    val = {"value": "Luke is a gheyfish"}
     return jsonify(val)
 
 @app.route('/pandas')
